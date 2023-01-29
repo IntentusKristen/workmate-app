@@ -16,7 +16,9 @@ const SignInScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // button behaviour functions
   const onSignInPressed = () => {};
+  const onSignUpPressed = () => {};
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
@@ -36,6 +38,7 @@ const SignInScreen = () => {
         />
       </View>
       <View style={styles.bottom} >
+        <Text style={{fontWeight: 'bold', right: '34%', marginBottom: '5%'}}>Hi there!</Text>
         <Text style={{right: '34%'}}>Email</Text>
         <CustomInput
           placeholder="Your Email"
@@ -55,9 +58,12 @@ const SignInScreen = () => {
           onPress={onSignInPressed}
         />
         </View>
-        <Text style={styles.prompt}>
-          Don't have an account? <Text style={styles.signup}>Sign Up</Text>
+
+        <View style={styles.prompt}>
+        <Text >
+          Don't have an account? <CustomButton text='Sign Up' type='textButton' onPress={onSignUpPressed}></CustomButton>
         </Text>
+        </View>
       </View>
     </View>
   );
