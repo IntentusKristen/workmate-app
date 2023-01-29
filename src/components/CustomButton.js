@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     },
 
     container_textButton: {
-        marginVertical: -1
+        marginVertical: -1,
+        alignItems: 'center',
     },
     text_textButton: {
         textDecorationLine: 'underline',
