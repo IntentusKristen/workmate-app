@@ -24,7 +24,6 @@ const SignInScreen = () => {
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
   return (
-    <ScrollView>
     <View style={styles.root}>
       <View style={styles.top}>
         <Image
@@ -68,7 +67,6 @@ const SignInScreen = () => {
         </View>
       </View>
     </View>
-    </ScrollView>
   );
 };
 
