@@ -10,15 +10,17 @@ import React, { useState } from "react";
 import Logo from "../../assets/img/Logo.png";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
-import ConvoImg from "../../assets/img/ConvoImg.png";
 
-const SignInScreen = () => {
+const SignUpScreen = () => {
   // useStates for sign in credentials
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   // button behaviour functions
-  const onSignInPressed = () => {};
   const onSignUpPressed = () => {};
   const onForgotPassword= () => {};
 
@@ -32,42 +34,52 @@ const SignInScreen = () => {
           resizeMode="contain"
           style={[styles.logo, { height: height * 0.3 }]}
         />
-        <Text style={{top: '-27%'}}>Unleash your potential</Text>
-        <Image
-            source={ConvoImg}
-            resizeMode= 'contain'
-            style={[styles.logo, { top: '-40%'}]}
-        />
-      </View>
-      <View style={styles.bottom} >
-        <Text style={{fontWeight: 'bold', right: '34%', marginBottom: '5%'}}>Hi there!</Text>
-        <Text style={{right: '34%'}}>Email</Text>
+        <Text style={{top: '-8%'}}>Unleash your potential</Text>
+        <Text style={styles.signUpText}>Sign Up</Text>
         <CustomInput
-          placeholder="Your Email"
+          placeholder="First Name"
+          value={firstName}
+          setValue={setFirstName}
+        />
+        <CustomInput
+          placeholder="Last Name"
+          value={lastName}
+          setValue={setLastName}
+        />
+        <CustomInput
+          placeholder="Email"
           value={email}
           setValue={setEmail}
-          style={{marginBottom: -50}}
         />
-        <Text style={{right: '30%', marginTop: 5}}>Password</Text>
+        <CustomInput
+          placeholder="Phone Number"
+          value={phoneNumber}
+          setValue={setPhoneNumber}
+        />
+        
         <CustomInput
           placeholder="Your Password"
           value={password}
           setValue={setPassword}
           secureTextEntry={true}
         />
+        <CustomInput
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          setValue={setConfirmPassword}
+        />
         <View style={{marginTop: 30, width: '50%'}}>
         <CustomButton
-          text="Login"
-          onPress={onSignInPressed}
+          text="Sign Up"
+          onPress={onSignUpPressed}
         />
         </View>
 
         <View style={styles.prompt}>
-        <CustomButton text='Forgot Password?' type='textButton' onPress={onForgotPassword}></CustomButton>
         <Text >
-          Don't have an account? <CustomButton text='Sign Up' type='textButton' onPress={onSignUpPressed}></CustomButton>
+          Have an account? <CustomButton text='Sign In' type='textButton' onPress={onSignUpPressed}></CustomButton>
         </Text>
-        </View>
+      </View>
       </View>
     </View>
   );
@@ -80,17 +92,8 @@ const styles = StyleSheet.create({
   top: {
     backgroundColor: "#B0D0D3",
     alignItems: 'center',
-    height: '35%',
+    height: '100%',
     padding: 20,
-  },
-  bottom: {
-    backgroundColor: 'white',
-    alignItems: "center",
-    borderRadius: 20,
-    height: '65%',
-    paddingVertical: '10%',
-    marginTop: 5,
-
   },
   logo: {
     maxWidth: 300,
@@ -106,6 +109,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     paddingBottom: '25%',
   },
+  signUpText: {
+    fontWeight: 'bold',
+    marginBottom: 20
+  }
 });
 
-export default SignInScreen;
+export default SignUpScreen;
