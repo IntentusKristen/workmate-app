@@ -22,7 +22,7 @@ const SignUpScreen = () => {
 
   // button behaviour functions
   const onSignUpPressed = () => {};
-  const onForgotPassword= () => {};
+  const onSignInPressed = () => {};
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
@@ -77,7 +77,7 @@ const SignUpScreen = () => {
 
         <View style={styles.prompt}>
         <Text >
-          Have an account? <CustomButton text='Sign In' type='textButton' onPress={onSignUpPressed}></CustomButton>
+          Have an account? <CustomButton text='Sign In' type='textButton' onPress={onSignInPressed}></CustomButton>
         </Text>
       </View>
       </View>

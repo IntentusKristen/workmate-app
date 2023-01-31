@@ -46,7 +46,7 @@ const SignInScreen = () => {
           placeholder="Your Email"
           value={email}
           setValue={setEmail}
-          style={{marginBottom: -50}}
+          style={{marginBottom: 50}}
         />
         <Text style={{right: '30%', marginTop: 5}}>Password</Text>
         <CustomInput
