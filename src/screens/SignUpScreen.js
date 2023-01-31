@@ -67,6 +67,7 @@ const SignUpScreen = () => {
           placeholder="Confirm Password"
           value={confirmPassword}
           setValue={setConfirmPassword}
+          secureTextEntry={true}
         />
         <View style={{marginTop: 30, width: '50%'}}>
         <CustomButton
