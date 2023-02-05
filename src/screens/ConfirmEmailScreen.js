@@ -7,11 +7,10 @@ import {
   ScrollView
 } from "react-native";
 import React, { useState } from "react";
-import Logo from "../../assets/img/Logo.png";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
 
-const SignUpScreen = () => {
+const ConfirmEmailScreen = () => {
   // useStates for sign in credentials
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -31,13 +30,8 @@ const SignUpScreen = () => {
   return (
     <View style={styles.root}>
       <View style={styles.top}>
-        <Image
-          source={Logo}
-          resizeMode="contain"
-          style={[styles.logo, { height: height * 0.3 }]}
-        />
-        <Text style={{top: '-8%'}}>Unleash your potential</Text>
-        <Text style={styles.signUpText}>Sign Up</Text>
+
+        <Text style={styles.signUpText}>Confirm Your Email</Text>
         <CustomInput
           placeholder="First Name"
           value={firstName}
@@ -103,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#B0D0D3",
     alignItems: 'center',
     height: '100%',
-    padding: 20,
+    paddingTop: 100
     
   },
   logo: {
@@ -135,4 +129,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SignUpScreen;
+export default ConfirmEmailScreen;
