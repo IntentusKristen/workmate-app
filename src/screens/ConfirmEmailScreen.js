@@ -11,19 +11,13 @@ import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
 
 const ConfirmEmailScreen = () => {
-  // useStates for sign in credentials
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // useStates for email confirm credentials
+  const [code, setCode] = useState("");
 
   // button behaviour functions
-  const onSignUpPressed = () => {};
+  const onConfirmPressed = () => {};
+  const onResendPressed = () => {};
   const onSignInPressed = () => {};
-  const onTermsOfUsePressed = () => {};
-  const onPrivacyPolicyPressed = () => {};
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
@@ -31,56 +25,24 @@ const ConfirmEmailScreen = () => {
     <View style={styles.root}>
       <View style={styles.top}>
 
-        <Text style={styles.signUpText}>Confirm Your Email</Text>
+        <Text style={styles.titleText}>Confirm Your Email</Text>
         <CustomInput
-          placeholder="First Name"
-          value={firstName}
-          setValue={setFirstName}
-        />
-        <CustomInput
-          placeholder="Last Name"
-          value={lastName}
-          setValue={setLastName}
-        />
-        <CustomInput
-          placeholder="Email"
-          value={email}
-          setValue={setEmail}
-        />
-        <CustomInput
-          placeholder="Phone Number"
-          value={phoneNumber}
-          setValue={setPhoneNumber}
+          placeholder="Confirmation Code"
+          value={code}
+          setValue={setCode}
         />
         
-        <CustomInput
-          placeholder="Your Password"
-          value={password}
-          setValue={setPassword}
-          secureTextEntry={true}
-        />
-        <CustomInput
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          setValue={setConfirmPassword}
-          secureTextEntry={true}
-        />
         <View style={{marginTop: 20, width: '50%'}}>
         <CustomButton
-          text="Sign Up"
-          onPress={onSignUpPressed}
+          text="Confirm"
+          onPress={onConfirmPressed}
         />
         </View>
-
-        <View >
-        <Text style={styles.text}>By registering you confirm that you accept our 
-          <Text style={styles.link} onPress={onTermsOfUsePressed}> Terms of Use</Text> and 
-          <Text style={styles.link} onPress={onPrivacyPolicyPressed}> Privacy policy</Text>.
-        </Text>
-        </View>
-
         <View style={styles.prompt}>
-        <Text>
+        <Text style= {{textAlign: 'center'}}>
+          Didn't get code? <CustomButton text='Resend Code' type='textButton' onPress={onResendPressed}></CustomButton>
+        </Text>
+        <Text style= {{textAlign: 'center'}}>
           Have an account? <CustomButton text='Sign In' type='textButton' onPress={onSignInPressed}></CustomButton>
         </Text>
       </View>
@@ -90,14 +52,14 @@ const ConfirmEmailScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    root: {
+  root: {
         backgroundColor: "#B0D0D3",
     },
   top: {
     backgroundColor: "#B0D0D3",
     alignItems: 'center',
     height: '100%',
-    paddingTop: 100
+    paddingTop: '65%'
     
   },
   logo: {
@@ -114,19 +76,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     paddingBottom: '25%',
   },
-  signUpText: {
+  titleText: {
     fontWeight: 'bold',
     marginBottom: 20
   },
-  text: {
-    color: 'grey',
-    textAlign: 'center'
-
-  },
-  link: {
-    color:'yellow',
-    textAlign: 'center'
-  }
 });
 
 export default ConfirmEmailScreen;
