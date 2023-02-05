@@ -10,13 +10,12 @@ import React, { useState } from "react";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
 
-const ConfirmEmailScreen = () => {
+const ForgotPasswordScreen = () => {
   // useStates for email confirm credentials
-  const [code, setCode] = useState("");
+  const [email, setEmail] = useState("");
 
   // button behaviour functions
-  const onConfirmPressed = () => {};
-  const onResendPressed = () => {};
+  const onSendPressed = () => {};
   const onSignInPressed = () => {};
 
   // get height of screen to set logo to 30% of screen
@@ -25,23 +24,20 @@ const ConfirmEmailScreen = () => {
     <View style={styles.root}>
       <View style={styles.top}>
 
-        <Text style={styles.titleText}>Confirm Your Email</Text>
+        <Text style={styles.titleText}>Reset Your Password</Text>
         <CustomInput
-          placeholder="Confirmation Code"
-          value={code}
-          setValue={setCode}
+          placeholder="Email"
+          value={email}
+          setValue={setEmail}
         />
         
         <View style={{marginTop: 20, width: '50%'}}>
         <CustomButton
-          text="Confirm"
-          onPress={onConfirmPressed}
+          text="Send"
+          onPress={onSendPressed}
         />
         </View>
         <View style={styles.prompt}>
-        <Text style= {{textAlign: 'center'}}>
-          Didn't get code? <CustomButton text='Resend Code' type='textButton' onPress={onResendPressed}></CustomButton>
-        </Text>
         <Text style= {{textAlign: 'center'}}>
           Back to <CustomButton text='Sign In' type='textButton' onPress={onSignInPressed}></CustomButton>
         </Text>
@@ -82,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConfirmEmailScreen;
+export default ForgotPasswordScreen;

@@ -10,9 +10,11 @@ import React, { useState } from "react";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
 
-const ConfirmEmailScreen = () => {
+const NewPasswordScreen = () => {
   // useStates for email confirm credentials
   const [code, setCode] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   // button behaviour functions
   const onConfirmPressed = () => {};
@@ -25,11 +27,23 @@ const ConfirmEmailScreen = () => {
     <View style={styles.root}>
       <View style={styles.top}>
 
-        <Text style={styles.titleText}>Confirm Your Email</Text>
+        <Text style={styles.titleText}>Reset Your Password</Text>
         <CustomInput
-          placeholder="Confirmation Code"
+          placeholder="Code"
           value={code}
           setValue={setCode}
+        />
+        <CustomInput
+          placeholder="Enter your new password"
+          value={newPassword}
+          setValue={setNewPassword}
+          secureTextEntry={true}
+        />
+        <CustomInput
+          placeholder="Confirm your new password"
+          value={confirmPassword}
+          setValue={setConfirmPassword}
+          secureTextEntry={true}
         />
         
         <View style={{marginTop: 20, width: '50%'}}>
@@ -82,4 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConfirmEmailScreen;
+export default NewPasswordScreen;
