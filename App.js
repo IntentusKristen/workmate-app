@@ -2,8 +2,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import WelcomeScreen from './src/screens/Welcome';
 import React, { useState, useEffect } from 'react';
 import * as Font from 'expo-font';
-import Navigation from './src/components/Navigation';
 import SignInScreen from './src/screens/SignInScreen';
+import Navigation from './src/components/Navigation';
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -29,8 +29,8 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <WelcomeScreen/>
+    <View style={{flex: 1}}>
+      <Navigation/>
     </View>
   );
 }
