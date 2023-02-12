@@ -40,7 +40,7 @@ const SignInScreen = () => {
         />
       </View>
       <View style={styles.bottom} >
-        <Text style={{fontWeight: 'bold', right: '34%', marginBottom: '5%', fontFamily: 'Montserrat-Medium',}}>Hi there!</Text>
+        <Text style={{right: '34%', marginBottom: '5%', fontFamily: 'Montserrat-Bold',}}>Hi there!</Text>
         <Text style={{right: '34%', fontFamily: 'Montserrat-Regular',}}>Email</Text>
         <CustomInput
           placeholder="Your Email"
