@@ -32,7 +32,7 @@ const SignInScreen = () => {
           resizeMode="contain"
           style={[styles.logo, { height: height * 0.3 }]}
         />
-        <Text style={{top: '-27%'}}>Unleash your potential</Text>
+        <Text style={{top: '-27%', fontFamily: 'Montserrat-Regular',}}>Unleash your potential</Text>
         <Image
             source={ConvoImg}
             resizeMode= 'contain'
@@ -40,15 +40,15 @@ const SignInScreen = () => {
         />
       </View>
       <View style={styles.bottom} >
-        <Text style={{fontWeight: 'bold', right: '34%', marginBottom: '5%'}}>Hi there!</Text>
-        <Text style={{right: '34%'}}>Email</Text>
+        <Text style={{fontWeight: 'bold', right: '34%', marginBottom: '5%', fontFamily: 'Montserrat-Medium',}}>Hi there!</Text>
+        <Text style={{right: '34%', fontFamily: 'Montserrat-Regular',}}>Email</Text>
         <CustomInput
           placeholder="Your Email"
           value={email}
           setValue={setEmail}
-          style={{marginBottom: 50}}
+          style={{marginBottom: 50,}}
         />
-        <Text style={{right: '30%', marginTop: 5}}>Password</Text>
+        <Text style={{right: '30%', marginTop: 5, fontFamily: 'Montserrat-Regular',}}>Password</Text>
         <CustomInput
           placeholder="Your Password"
           value={password}
@@ -64,7 +64,7 @@ const SignInScreen = () => {
 
         <View style={styles.prompt}>
         <CustomButton text='Forgot Password?' type='textButton' onPress={onForgotPassword}></CustomButton>
-        <Text >
+        <Text style={{fontFamily: 'Montserrat-Regular',}}>
           Don't have an account? <CustomButton text='Sign Up' type='textButton' onPress={onSignUpPressed}></CustomButton>
         </Text>
         </View>
@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     paddingBottom: '25%',
+    
   },
 });
 

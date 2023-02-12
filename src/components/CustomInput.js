@@ -10,7 +10,9 @@ const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
         onChangeText={setValue}
         placeholder={placeholder}
         style={styles.input}
-        secureTextEntry={secureTextEntry} />
+        secureTextEntry={secureTextEntry} 
+        
+        />
       </View>
     )
   }
@@ -29,7 +31,9 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         marginBottom: 10
     },
-    input: {},
+    input: {
+      fontFamily: 'Montserrat-Regular'
+    },
 })
 
 export default CustomInput
