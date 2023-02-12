@@ -53,10 +53,10 @@ const NewPasswordScreen = () => {
         />
         </View>
         <View style={styles.prompt}>
-        <Text style= {{textAlign: 'center'}}>
+        <Text style= {{textAlign: 'center', fontFamily: 'Montserrat-Regular'}}>
           Didn't get code? <CustomButton text='Resend Code' type='textButton' onPress={onResendPressed}></CustomButton>
         </Text>
-        <Text style= {{textAlign: 'center'}}>
+        <Text style= {{textAlign: 'center', fontFamily: 'Montserrat-Regular'}}>
           Back to <CustomButton text='Sign In' type='textButton' onPress={onSignInPressed}></CustomButton>
         </Text>
       </View>
@@ -91,8 +91,9 @@ const styles = StyleSheet.create({
     paddingBottom: '25%',
   },
   titleText: {
-    fontWeight: 'bold',
-    marginBottom: 20
+    fontFamily: 'Montserrat-Bold',
+    marginBottom: 20,
+    fontSize: 18
   },
 });
 

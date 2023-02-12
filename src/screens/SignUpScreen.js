@@ -31,12 +31,15 @@ const SignUpScreen = () => {
   return (
     <View style={styles.root}>
       <View style={styles.top}>
+      
         <Image
           source={Logo}
           resizeMode="contain"
           style={[styles.logo, { height: height * 0.3 }]}
         />
-        <Text style={{top: '-8%'}}>Unleash your potential</Text>
+        <Text style={{top: '-7%', fontFamily: 'Montserrat-Regular'}}>Unleash your potential</Text>
+
+        <View style={styles.signUpContainer}>
         <Text style={styles.signUpText}>Sign Up</Text>
         <CustomInput
           placeholder="First Name"
@@ -71,7 +74,8 @@ const SignUpScreen = () => {
           setValue={setConfirmPassword}
           secureTextEntry={true}
         />
-        <View style={{marginTop: 20, width: '50%'}}>
+        </View>
+        <View style={{width: '50%'}}>
         <CustomButton
           text="Sign Up"
           onPress={onSignUpPressed}
@@ -86,7 +90,7 @@ const SignUpScreen = () => {
         </View>
 
         <View style={styles.prompt}>
-        <Text>
+        <Text style={{fontFamily: 'Montserrat-Regular'}}>
           Have an account? <CustomButton text='Sign In' type='textButton' onPress={onSignInPressed}></CustomButton>
         </Text>
       </View>
@@ -104,14 +108,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     padding: 20,
+    paddingTop: 20
     
   },
   logo: {
     maxWidth: 300,
     width: "70%",
     maxHeight: 200,
-    paddingVertical: 0,
-    marginVertical: 0,
+    marginTop: 20,
     position: 'block',
     top: 0
   },
@@ -121,17 +125,25 @@ const styles = StyleSheet.create({
     paddingBottom: '25%',
   },
   signUpText: {
-    fontWeight: 'bold',
-    marginBottom: 20
+    fontFamily: 'Montserrat-Bold',
+    marginBottom: 10,
+    fontSize: 18
   },
   text: {
     color: 'grey',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Montserrat-Regular',
+    paddingTop: 10
 
   },
   link: {
     color:'yellow',
     textAlign: 'center'
+  },
+  signUpContainer: {
+    top: '-3%',
+    alignItems: 'center',
+    width: '100%'
   }
 });
 

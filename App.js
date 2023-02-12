@@ -4,6 +4,10 @@ import React, { useState, useEffect } from 'react';
 import * as Font from 'expo-font';
 import SignInScreen from './src/screens/SignInScreen';
 import Navigation from './src/components/Navigation';
+import ConfirmEmailScreen from './src/screens/ConfirmEmailScreen';
+import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
+import NewPasswordScreen from './src/screens/NewPasswordScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -32,7 +36,7 @@ export default function App() {
 
   return (
     <View style={{flex: 1}}>
-      <Navigation/>
+      <SignUpScreen/>
     </View>
   );
 }
