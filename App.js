@@ -2,6 +2,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import WelcomeScreen from './src/screens/Welcome';
 import React, { useState, useEffect } from 'react';
 import * as Font from 'expo-font';
+import Navigation from './src/components/Navigation';
+import SignInScreen from './src/screens/SignInScreen';
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
