@@ -22,10 +22,15 @@ const SignInScreen = () => {
 
   // button behaviour functions
   const onSignInPressed = () => {
-    navigation.navigate("Welcome")
+    // navigate to landing page
   };
-  const onSignUpPressed = () => {};
-  const onForgotPassword= () => {};
+
+  const onSignUpPressed = () => {
+    navigation.navigate("SignUp")
+  };
+  const onForgotPassword= () => {
+    navigation.navigate("ForgotPassword")
+  };
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
