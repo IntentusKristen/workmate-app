@@ -11,19 +11,25 @@ import Logo from "../../assets/img/Logo.png";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
 import ConvoImg from "../../assets/img/ConvoImg.png";
+import { useNavigation } from "@react-navigation/native";
 
 const SignInScreen = () => {
   // useStates for sign in credentials
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigation = useNavigation();
+
   // button behaviour functions
-  const onSignInPressed = () => {};
+  const onSignInPressed = () => {
+    navigation.navigate("Welcome")
+  };
   const onSignUpPressed = () => {};
   const onForgotPassword= () => {};
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
+
   return (
     <View style={styles.root}>
       <View style={styles.top}>
