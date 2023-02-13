@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
 
 const NewPasswordScreen = () => {
   // useStates for email confirm credentials
@@ -16,10 +17,20 @@ const NewPasswordScreen = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const navigation = useNavigation();
+
   // button behaviour functions
-  const onConfirmPressed = () => {};
-  const onResendPressed = () => {};
-  const onSignInPressed = () => {};
+  const onConfirmPressed = () => {
+    navigation.navigate("SignIn")
+  };
+
+  const onResendPressed = () => {
+    navigation.navigate("ForgotPassword")
+  };
+  
+  const onSignInPressed = () => {
+    navigation.navigate("SignIn")
+  };
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();

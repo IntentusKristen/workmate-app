@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import Logo from "../../assets/img/Logo.png";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
 
 const SignUpScreen = () => {
   // useStates for sign in credentials
@@ -20,11 +21,23 @@ const SignUpScreen = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const navigation = useNavigation();
+
   // button behaviour functions
-  const onSignUpPressed = () => {};
-  const onSignInPressed = () => {};
-  const onTermsOfUsePressed = () => {};
-  const onPrivacyPolicyPressed = () => {};
+  const onSignUpPressed = () => {
+    navigation.navigate("ConfirmEmail")
+  };
+
+  const onSignInPressed = () => {
+    navigation.navigate("SignIn")
+  };
+  const onTermsOfUsePressed = () => {
+    // page with terms of use
+  };
+
+  const onPrivacyPolicyPressed = () => {
+    // page with privacy policy
+  };
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
