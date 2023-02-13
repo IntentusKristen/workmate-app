@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-workmate-staging-172520-authRole",
+      "UnauthRoleArn": "arn:aws:iam::306012790009:role/amplify-workmate-staging-172520-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::306012790009:role/amplify-workmate-staging-172520-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-workmate-staging-172520-deployment",
+      "UnauthRoleName": "amplify-workmate-staging-172520-unauthRole",
+      "StackName": "amplify-workmate-staging-172520",
+      "StackId": "arn:aws:cloudformation:us-east-1:306012790009:stack/amplify-workmate-staging-172520/6458b160-abc3-11ed-a383-0a8ada91baed",
+      "AmplifyAppId": "d2s4igtwnyzyo4"
+    },
+    "categories": {
+      "auth": {
+        "Workmate": {}
+      }
+    }
+  }
+}

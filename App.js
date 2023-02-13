@@ -8,6 +8,7 @@ import ConfirmEmailScreen from './src/screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/screens/NewPasswordScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
+import { Amplify } from 'aws-amplify';
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
