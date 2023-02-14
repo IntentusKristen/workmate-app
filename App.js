@@ -8,9 +8,9 @@ import ConfirmEmailScreen from './src/screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/screens/NewPasswordScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
-import Amplify from 'aws-amplify';
+import {Amplify} from 'aws-amplify';
 import config from  './src/aws-exports';
-import {withAuthentication} from 'aws-amplify-react-native';
+import { withAuthenticator } from 'aws-amplify-react-native';
 
 Amplify.configure(config);
 
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default withAuthenticator(App);
