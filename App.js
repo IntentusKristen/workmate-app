@@ -14,7 +14,8 @@ import {withAuthentication} from 'aws-amplify-react-native';
 
 Amplify.configure(config);
 
-export default function App() {
+const App = () => {
+
   const [fontLoaded, setFontLoaded] = useState(false);
 
   useEffect(() => {
@@ -50,3 +51,5 @@ const styles = StyleSheet.create({
   container: {
   },
 });
+
+export default App;
