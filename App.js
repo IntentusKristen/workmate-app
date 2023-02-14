@@ -8,7 +8,7 @@ import ConfirmEmailScreen from './src/screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/screens/NewPasswordScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
-import {Amplify} from 'aws-amplify';
+import {Amplify, Auth} from 'aws-amplify';
 import config from  './src/aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
 
@@ -40,6 +40,9 @@ const App = () => {
     );
   }
 
+  // sign out automatically each time we open application
+  //Auth.signOut();
+
   return (
     <View style={{flex: 1}}>
       <Navigation/>
@@ -52,4 +55,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withAuthenticator(App);
+
+export default App;
