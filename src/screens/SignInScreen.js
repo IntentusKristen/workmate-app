@@ -12,17 +12,38 @@ import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
 import ConvoImg from "../../assets/img/ConvoImg.png";
 import { useNavigation } from "@react-navigation/native";
+import { Auth } from "aws-amplify";
+import { Alert } from "bootstrap";
 
 const SignInScreen = () => {
   // useStates for sign in credentials
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // create useState to mark whether it's already loading/trying to sign in
+  const [loading, setLoading] = useState(false);
+
   const navigation = useNavigation();
 
   // button behaviour functions
-  const onSignInPressed = () => {
-    // navigate to landing page
+  const onSignInPressed = async data => {
+    // first check if sign in is already loading
+    if (loading) {
+      // stop execution
+      return;
+    }
+
+    // else set loading to true
+    setLoading(true);
+
+    try {
+      // try to get sign in details
+      const response = await Auth.signIn(data.email, data.password);
+    } catch(e) {
+      // if doesn't work display message
+      Alert.alert("Error", e.message);
+    }
+    setLoading(false);
   };
 
   const onSignUpPressed = () => {
@@ -68,7 +89,7 @@ const SignInScreen = () => {
         />
         <View style={{marginTop: 30, width: '50%'}}>
         <CustomButton
-          text="Login"
+          text={loading ? "Loading..." : "Login"}
           onPress={onSignInPressed}
         />
         </View>
