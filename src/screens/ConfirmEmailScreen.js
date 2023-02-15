@@ -21,19 +21,19 @@ const ConfirmEmailScreen = () => {
 
   const route = useRoute();
   // automatically fill email from input in sign up screen
-  const {control, handleSubmit} = useForm({defaultValues: {username: route?.params?.username}})
+  const {control, handleSubmit} = useForm({defaultValues: {email: route?.params?.email}})
 
   const navigation = useNavigation();
 
   // button behaviour functions
   const onConfirmPressed = async data => {
     try{
-      const response = await Auth.confirmSignUp(data.email, data.code);
-      navigation.navigate("");
+      await Auth.confirmSignUp(email, code);
+      navigation.navigate("SignIn");
     }catch(e) {
       Alert.alert()
     }
-    navigation.navigate("SignIn");
+    
   };
 
   const onResendPressed = () => {

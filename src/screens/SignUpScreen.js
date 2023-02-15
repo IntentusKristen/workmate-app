@@ -59,7 +59,7 @@ const SignUpScreen = () => {
         password,
         attributes: {given_name: firstName, family_name: lastName, phone_number: phoneNumber}
       })
-      navigation.navigate("ConfirmEmail", {username})
+      navigation.navigate("ConfirmEmail", {email})
     } catch(e) {
       Alert.alert("Error", e.message)
     }
@@ -159,7 +159,7 @@ const SignUpScreen = () => {
         </View>
         <View style={{width: '50%'}}>
         <CustomButton
-          text="Sign Up"
+          text={loading ? "Signing Up...": "Sign Up"}
           onPress={onSignUpPressed}
         />
         </View>
