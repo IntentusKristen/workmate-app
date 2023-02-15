@@ -4,7 +4,8 @@ import {
   Image,
   StyleSheet,
   useWindowDimensions,
-  ScrollView
+  ScrollView,
+  Alert
 } from "react-native";
 import React, { useState } from "react";
 import Logo from "../../assets/img/Logo.png";
@@ -13,7 +14,7 @@ import CustomButton from "../components/CustomButton";
 import ConvoImg from "../../assets/img/ConvoImg.png";
 import { useNavigation } from "@react-navigation/native";
 import { Auth } from "aws-amplify";
-import { Alert } from "bootstrap";
+import { useForm } from "react-hook-form";
 
 const SignInScreen = () => {
   // useStates for sign in credentials
@@ -24,6 +25,14 @@ const SignInScreen = () => {
   const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm();
+
+  // email regex to confirm valid email
+  const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   // button behaviour functions
   const onSignInPressed = async data => {
@@ -79,6 +88,7 @@ const SignInScreen = () => {
           value={email}
           setValue={setEmail}
           style={{marginBottom: 50,}}
+          control= {control}
           rules={{
             required: "Email is required",
             pattern: {value: EMAIL_REGEX, message: "Email is invalid"}
@@ -90,6 +100,7 @@ const SignInScreen = () => {
           value={password}
           setValue={setPassword}
           secureTextEntry={true}
+          control= {control}
           rules={{
             required: "Password is required",
             minLength: {

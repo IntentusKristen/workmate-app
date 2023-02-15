@@ -4,13 +4,16 @@ import {
   Image,
   StyleSheet,
   useWindowDimensions,
-  ScrollView
+  ScrollView,
+  Alert
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState} from "react";
 import Logo from "../../assets/img/Logo.png";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
+import { Auth } from "aws-amplify";
+import { useForm } from "react-hook-form";
 
 const SignUpScreen = () => {
   // useStates for sign in credentials
@@ -23,9 +26,45 @@ const SignUpScreen = () => {
 
   const navigation = useNavigation();
 
+  // useForm
+  const {
+    control,
+    handleSubmit,
+    watch
+  } = useForm();
+
+  // watches for when password gets assigned a value
+  const pwd = watch("password");
+
+  // create useState to mark whether it's already loading/trying to sign in
+  const [loading, setLoading] = useState(false);
+
+  // email regex to confirm valid email
+  const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
   // button behaviour functions
-  const onSignUpPressed = () => {
-    navigation.navigate("ConfirmEmail")
+  const onSignUpPressed = async data => {
+    // first check if sign in is already loading
+    if (loading) {
+      // stop execution
+      return;
+    }
+
+    // else set loading to true
+    setLoading(true);
+
+    try{
+      await Auth.signUp({
+        username: email,
+        password,
+        attributes: {given_name: firstName, family_name: lastName, phone_number: phoneNumber}
+      })
+      navigation.navigate("ConfirmEmail")
+    } catch(e) {
+      Alert.alert("Error", e.message)
+    }
+    setLoading(false)
+    
   };
 
   const onSignInPressed = () => {
@@ -58,21 +97,38 @@ const SignUpScreen = () => {
           placeholder="First Name"
           value={firstName}
           setValue={setFirstName}
+          control= {control}
+          rules={{
+            required: "First Name is required",
+          }}
         />
         <CustomInput
           placeholder="Last Name"
           value={lastName}
           setValue={setLastName}
+          control= {control}
+          rules={{
+            required: "Last Name is required",
+          }}
         />
         <CustomInput
           placeholder="Email"
           value={email}
           setValue={setEmail}
+          control= {control}
+          rules={{
+            required: "Email is required",
+            pattern: {value: EMAIL_REGEX, message: "Email is invalid"}
+          }}
         />
         <CustomInput
           placeholder="Phone Number"
           value={phoneNumber}
           setValue={setPhoneNumber}
+          control= {control}
+          rules={{
+            required: "Phone Number is required",
+          }}
         />
         
         <CustomInput
@@ -80,12 +136,25 @@ const SignUpScreen = () => {
           value={password}
           setValue={setPassword}
           secureTextEntry={true}
+          control= {control}
+          rules={{
+            required: "Password is required",
+            minLength: {
+              value: 8,
+              message: "Password should be at least 8 characters long"
+            }
+          }}
         />
         <CustomInput
           placeholder="Confirm Password"
           value={confirmPassword}
           setValue={setConfirmPassword}
           secureTextEntry={true}
+          control= {control}
+          rules={{
+            required: "Confirm Password is required",
+            validate: value => value == pwd || "Passwords must match"
+          }}
         />
         </View>
         <View style={{width: '50%'}}>
