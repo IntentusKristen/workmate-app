@@ -2,10 +2,20 @@ import { StyleSheet, Text, View } from 'react-native';
 import WelcomeScreen from './src/screens/Welcome';
 import React, { useState, useEffect } from 'react';
 import * as Font from 'expo-font';
-import Navigation from './src/components/Navigation';
 import SignInScreen from './src/screens/SignInScreen';
+import Navigation from './src/components/Navigation';
+import ConfirmEmailScreen from './src/screens/ConfirmEmailScreen';
+import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
+import NewPasswordScreen from './src/screens/NewPasswordScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
+import {Amplify, Auth} from 'aws-amplify';
+import config from  './src/aws-exports';
+import { withAuthenticator } from 'aws-amplify-react-native';
 
-export default function App() {
+Amplify.configure(config);
+
+const App = () => {
+
   const [fontLoaded, setFontLoaded] = useState(false);
 
   useEffect(() => {
@@ -13,6 +23,8 @@ export default function App() {
       await Font.loadAsync({
         'Montserrat-Regular': require('./assets/fonts/Montserrat-Regular.ttf'),
         'Montserrat-Medium': require('./assets/fonts/Montserrat-Medium.ttf'),
+        'Montserrat-Bold': require('./assets/fonts/Montserrat-Bold.ttf'),
+        'Montserrat-Light': require('./assets/fonts/Montserrat-Light.ttf')
       });
       setFontLoaded(true);
     }
@@ -28,9 +40,12 @@ export default function App() {
     );
   }
 
+  // sign out automatically each time we open application
+  //Auth.signOut();
+
   return (
-    <View style={styles.container}>
-      <WelcomeScreen/>
+    <View style={{flex: 1}}>
+      <Navigation/>
     </View>
   );
 }
@@ -39,3 +54,6 @@ const styles = StyleSheet.create({
   container: {
   },
 });
+
+
+export default App;

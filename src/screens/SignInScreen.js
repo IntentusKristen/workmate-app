@@ -11,19 +11,51 @@ import Logo from "../../assets/img/Logo.png";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
 import ConvoImg from "../../assets/img/ConvoImg.png";
+import { useNavigation } from "@react-navigation/native";
+import { Auth } from "aws-amplify";
+import { Alert } from "bootstrap";
 
 const SignInScreen = () => {
   // useStates for sign in credentials
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // create useState to mark whether it's already loading/trying to sign in
+  const [loading, setLoading] = useState(false);
+
+  const navigation = useNavigation();
+
   // button behaviour functions
-  const onSignInPressed = () => {};
-  const onSignUpPressed = () => {};
-  const onForgotPassword= () => {};
+  const onSignInPressed = async data => {
+    // first check if sign in is already loading
+    if (loading) {
+      // stop execution
+      return;
+    }
+
+    // else set loading to true
+    setLoading(true);
+
+    try {
+      // try to get sign in details
+      const response = await Auth.signIn(data.email, data.password);
+    } catch(e) {
+      // if doesn't work display message
+      Alert.alert("Error", e.message);
+    }
+    setLoading(false);
+  };
+
+  const onSignUpPressed = () => {
+    navigation.navigate("SignUp")
+  };
+  const onForgotPassword= () => {
+    navigation.navigate("ForgotPassword")
+  };
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
+
   return (
     <View style={styles.root}>
       <View style={styles.top}>
@@ -32,7 +64,7 @@ const SignInScreen = () => {
           resizeMode="contain"
           style={[styles.logo, { height: height * 0.3 }]}
         />
-        <Text style={{top: '-27%'}}>Unleash your potential</Text>
+        <Text style={{top: '-27%', fontFamily: 'Montserrat-Regular',}}>Unleash your potential</Text>
         <Image
             source={ConvoImg}
             resizeMode= 'contain'
@@ -40,15 +72,15 @@ const SignInScreen = () => {
         />
       </View>
       <View style={styles.bottom} >
-        <Text style={{fontWeight: 'bold', right: '34%', marginBottom: '5%'}}>Hi there!</Text>
-        <Text style={{right: '34%'}}>Email</Text>
+        <Text style={{right: '34%', marginBottom: '5%', fontFamily: 'Montserrat-Bold',}}>Hi there!</Text>
+        <Text style={{right: '34%', fontFamily: 'Montserrat-Regular',}}>Email</Text>
         <CustomInput
           placeholder="Your Email"
           value={email}
           setValue={setEmail}
-          style={{marginBottom: 50}}
+          style={{marginBottom: 50,}}
         />
-        <Text style={{right: '30%', marginTop: 5}}>Password</Text>
+        <Text style={{right: '30%', marginTop: 5, fontFamily: 'Montserrat-Regular',}}>Password</Text>
         <CustomInput
           placeholder="Your Password"
           value={password}
@@ -57,14 +89,14 @@ const SignInScreen = () => {
         />
         <View style={{marginTop: 30, width: '50%'}}>
         <CustomButton
-          text="Login"
+          text={loading ? "Loading..." : "Login"}
           onPress={onSignInPressed}
         />
         </View>
 
         <View style={styles.prompt}>
         <CustomButton text='Forgot Password?' type='textButton' onPress={onForgotPassword}></CustomButton>
-        <Text >
+        <Text style={{fontFamily: 'Montserrat-Regular',}}>
           Don't have an account? <CustomButton text='Sign Up' type='textButton' onPress={onSignUpPressed}></CustomButton>
         </Text>
         </View>
@@ -105,6 +137,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     paddingBottom: '25%',
+    
   },
 });
 

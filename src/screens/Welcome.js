@@ -1,8 +1,16 @@
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import logo from '../../assets/logo.png';
 import welcome from '../../assets/welcome-image.png';
+import CustomButton from '../components/CustomButton';
+import { useNavigation } from '@react-navigation/native';
 
 const WelcomePage = () => {
+  const navigation = useNavigation();
+  // button press navigation
+  const onGetStartedPressed = () => {
+    navigation.navigate("SignIn")
+  }
+
   return (
     <View style={styles.container}>
       <View>
@@ -18,9 +26,11 @@ const WelcomePage = () => {
       />
       <Text style={styles.text}>Unleash your potential with Workmate. We match you with like-minded partners 
       to keep you motivated, accountable and on track to success.</Text>
-      <TouchableOpacity style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>Get Started</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonStyling}>
+      <CustomButton
+        onPress={onGetStartedPressed} 
+        text="Get Started"></CustomButton>
+      </View>
     </View>
   );
 };
@@ -79,4 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
+  buttonStyling: {
+    width: '50%'
+  }
 });

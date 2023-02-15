@@ -9,15 +9,26 @@ import {
 import React, { useState } from "react";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
 
 const ConfirmEmailScreen = () => {
   // useStates for email confirm credentials
   const [code, setCode] = useState("");
 
+  const navigation = useNavigation();
+
   // button behaviour functions
-  const onConfirmPressed = () => {};
-  const onResendPressed = () => {};
-  const onSignInPressed = () => {};
+  const onConfirmPressed = () => {
+    navigation.navigate("SignIn");
+  };
+
+  const onResendPressed = () => {
+    // pop up that says code resent or something
+  };
+
+  const onSignInPressed = () => {
+    navigation.navigate("SignIn")
+  };
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
@@ -39,10 +50,10 @@ const ConfirmEmailScreen = () => {
         />
         </View>
         <View style={styles.prompt}>
-        <Text style= {{textAlign: 'center'}}>
+        <Text style= {{textAlign: 'center', fontFamily: 'Montserrat-Regular'}}>
           Didn't get code? <CustomButton text='Resend Code' type='textButton' onPress={onResendPressed}></CustomButton>
         </Text>
-        <Text style= {{textAlign: 'center'}}>
+        <Text style= {{textAlign: 'center', fontFamily: 'Montserrat-Regular'}}>
           Back to <CustomButton text='Sign In' type='textButton' onPress={onSignInPressed}></CustomButton>
         </Text>
       </View>
@@ -77,8 +88,9 @@ const styles = StyleSheet.create({
     paddingBottom: '25%',
   },
   titleText: {
-    fontWeight: 'bold',
-    marginBottom: 20
+    marginBottom: 20,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 18
   },
 });
 

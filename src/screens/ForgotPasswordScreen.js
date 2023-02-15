@@ -9,14 +9,22 @@ import {
 import React, { useState } from "react";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
 
 const ForgotPasswordScreen = () => {
   // useStates for email confirm credentials
   const [email, setEmail] = useState("");
 
+  const navigation = useNavigation();
+
   // button behaviour functions
-  const onSendPressed = () => {};
-  const onSignInPressed = () => {};
+  const onSendPressed = () => {
+    navigation.navigate("NewPassword")
+  };
+
+  const onSignInPressed = () => {
+    navigation.navigate("SignIn")
+  };
 
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
@@ -38,7 +46,7 @@ const ForgotPasswordScreen = () => {
         />
         </View>
         <View style={styles.prompt}>
-        <Text style= {{textAlign: 'center'}}>
+        <Text style= {{textAlign: 'center', fontFamily: 'Montserrat-Regular'}}>
           Back to <CustomButton text='Sign In' type='textButton' onPress={onSignInPressed}></CustomButton>
         </Text>
       </View>
@@ -73,8 +81,9 @@ const styles = StyleSheet.create({
     paddingBottom: '25%',
   },
   titleText: {
-    fontWeight: 'bold',
-    marginBottom: 20
+    marginBottom: 20,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 18
   },
 });
 
