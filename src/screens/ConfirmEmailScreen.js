@@ -4,21 +4,35 @@ import {
   Image,
   StyleSheet,
   useWindowDimensions,
-  ScrollView
+  ScrollView,
+  Alert
 } from "react-native";
 import React, { useState } from "react";
 import CustomInput from "../components/CustomInput.js";
 import CustomButton from "../components/CustomButton";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { useForm } from "react-hook-form";
+import { Auth } from "aws-amplify";
 
 const ConfirmEmailScreen = () => {
   // useStates for email confirm credentials
   const [code, setCode] = useState("");
+  const [email, setEmail] = useState("");
+
+  const route = useRoute();
+  // automatically fill email from input in sign up screen
+  const {control, handleSubmit} = useForm({defaultValues: {username: route?.params?.username}})
 
   const navigation = useNavigation();
 
   // button behaviour functions
-  const onConfirmPressed = () => {
+  const onConfirmPressed = async data => {
+    try{
+      const response = await Auth.confirmSignUp(data.email, data.code);
+      navigation.navigate("");
+    }catch(e) {
+      Alert.alert()
+    }
     navigation.navigate("SignIn");
   };
 
@@ -38,9 +52,21 @@ const ConfirmEmailScreen = () => {
 
         <Text style={styles.titleText}>Confirm Your Email</Text>
         <CustomInput
+          placeholder="Email"
+          value={email}
+          setValue={setEmail}
+          rules={{
+            required: "Email is required"
+          }}
+        />
+
+        <CustomInput
           placeholder="Confirmation Code"
           value={code}
           setValue={setCode}
+          rules={{
+            required: "Confirmation code is required"
+          }}
         />
         
         <View style={{marginTop: 20, width: '50%'}}>

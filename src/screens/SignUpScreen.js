@@ -59,7 +59,7 @@ const SignUpScreen = () => {
         password,
         attributes: {given_name: firstName, family_name: lastName, phone_number: phoneNumber}
       })
-      navigation.navigate("ConfirmEmail")
+      navigation.navigate("ConfirmEmail", {username})
     } catch(e) {
       Alert.alert("Error", e.message)
     }
