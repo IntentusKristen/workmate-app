@@ -79,6 +79,10 @@ const SignInScreen = () => {
           value={email}
           setValue={setEmail}
           style={{marginBottom: 50,}}
+          rules={{
+            required: "Email is required",
+            pattern: {value: EMAIL_REGEX, message: "Email is invalid"}
+          }}
         />
         <Text style={{right: '30%', marginTop: 5, fontFamily: 'Montserrat-Regular',}}>Password</Text>
         <CustomInput
