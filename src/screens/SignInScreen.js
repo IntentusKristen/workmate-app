@@ -90,6 +90,13 @@ const SignInScreen = () => {
           value={password}
           setValue={setPassword}
           secureTextEntry={true}
+          rules={{
+            required: "Password is required",
+            minLength: {
+              value: 8,
+              message: "Password should be at least 8 characters long"
+            }
+          }}
         />
         <View style={{marginTop: 30, width: '50%'}}>
         <CustomButton
