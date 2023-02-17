@@ -19,6 +19,9 @@ const ConfirmEmailScreen = () => {
   const [code, setCode] = useState("");
   const [email, setEmail] = useState("");
 
+  // create useState to mark whether it's already loading/trying to sign in
+  const [loading, setLoading] = useState(false);
+
   const route = useRoute();
   // automatically fill email from input in sign up screen
   const {control, handleSubmit} = useForm({defaultValues: {email: route?.params?.email}})
@@ -27,13 +30,18 @@ const ConfirmEmailScreen = () => {
 
   // button behaviour functions
   const onConfirmPressed = async data => {
+    if (loading){
+      return;
+    }
+    setLoading(true);
+
     try{
       await Auth.confirmSignUp(email, code);
       navigation.navigate("SignIn");
     }catch(e) {
       Alert.alert()
     }
-    
+    setLoading(false);
   };
 
   const onResendPressed = () => {
@@ -52,18 +60,22 @@ const ConfirmEmailScreen = () => {
 
         <Text style={styles.titleText}>Confirm Your Email</Text>
         <CustomInput
+          name="email"
           placeholder="Email"
           value={email}
           setValue={setEmail}
+          control={control}
           rules={{
             required: "Email is required"
           }}
         />
 
         <CustomInput
+          name="code"
           placeholder="Confirmation Code"
           value={code}
           setValue={setCode}
+          control={control}
           rules={{
             required: "Confirmation code is required"
           }}
@@ -71,7 +83,7 @@ const ConfirmEmailScreen = () => {
         
         <View style={{marginTop: 20, width: '50%'}}>
         <CustomButton
-          text="Confirm"
+          text={loading ? "Confirming...":"Confirm"}
           onPress={onConfirmPressed}
         />
         </View>

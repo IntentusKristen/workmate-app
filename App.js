@@ -44,7 +44,7 @@ const App = () => {
   //Auth.signOut();
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: "#B0D0D3",}}>
       <Navigation/>
     </View>
   );
@@ -52,6 +52,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
+    
   },
 });
 

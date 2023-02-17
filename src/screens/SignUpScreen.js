@@ -81,7 +81,9 @@ const SignUpScreen = () => {
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
   return (
-    <View style={styles.root}>
+    
+    
+    <ScrollView>
       <View style={styles.top}>
       
         <Image
@@ -177,18 +179,17 @@ const SignUpScreen = () => {
         </Text>
       </View>
       </View>
-    </View>
+      </ScrollView>
+    
+    
   );
 };
 
 const styles = StyleSheet.create({
-    root: {
-        backgroundColor: "#B0D0D3",
-    },
   top: {
     backgroundColor: "#B0D0D3",
     alignItems: 'center',
-    height: '100%',
+    height: '110%',
     padding: 20,
     paddingTop: 20
     
