@@ -23,6 +23,7 @@ const SignUpScreen = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
@@ -32,14 +33,10 @@ const SignUpScreen = () => {
   // watches for when password gets assigned a value
   const pwd = watch("password");
 
-  // create useState to mark whether it's already loading/trying to sign in
-  const [loading, setLoading] = useState(false);
-
   // email regex to confirm valid email
   const EMAIL_REGEX =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-  // button behaviour functions
   const onSignUpPressed = async (data) => {
     // first check if sign in is already loading
     if (loading) {
