@@ -55,7 +55,6 @@ const ConfirmEmailScreen = () => {
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
   return (
-    <View style={styles.root}>
       <View style={styles.top}>
 
         <Text style={styles.titleText}>Confirm Your Email</Text>
@@ -96,18 +95,16 @@ const ConfirmEmailScreen = () => {
         </Text>
       </View>
       </View>
-    </View>
+
   );
 };
 
 const styles = StyleSheet.create({
-  root: {
-        backgroundColor: "#B0D0D3",
-    },
+
   top: {
     backgroundColor: "#B0D0D3",
     alignItems: 'center',
-    height: '100%',
+    flex: 1,
     paddingTop: '65%'
     
   },

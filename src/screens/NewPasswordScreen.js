@@ -35,7 +35,6 @@ const NewPasswordScreen = () => {
   // get height of screen to set logo to 30% of screen
   const { height } = useWindowDimensions();
   return (
-    <View style={styles.root}>
       <View style={styles.top}>
 
         <Text style={styles.titleText}>Reset Your Password</Text>
@@ -72,14 +71,10 @@ const NewPasswordScreen = () => {
         </Text>
       </View>
       </View>
-    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  root: {
-        backgroundColor: "#B0D0D3",
-    },
   top: {
     backgroundColor: "#B0D0D3",
     alignItems: 'center',
