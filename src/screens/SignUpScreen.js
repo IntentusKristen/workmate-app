@@ -57,7 +57,7 @@ const SignUpScreen = () => {
           phone_number: phoneNumber,
         },
       });
-      navigation.navigate("ConfirmEmail", { email });
+      navigation.navigate("ConfirmEmail");
     } catch (e) {
       Alert.alert("Error", e.message);
     }
@@ -67,6 +67,7 @@ const SignUpScreen = () => {
   const onSignInPressed = () => {
     navigation.navigate("SignIn");
   };
+
   const onTermsOfUsePressed = () => {
     // page with terms of use
   };
@@ -124,7 +125,6 @@ const SignUpScreen = () => {
               required: "Phone Number is required",
             }}
           />
-
           <CustomInput
             placeholder="Your Password"
             value={password}

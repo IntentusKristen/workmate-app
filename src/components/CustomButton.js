@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   },
   text_: {
     color: "white",
-    fontWeight: "bold",
     fontFamily: "Montserrat-Bold",
   },
   container_textButton: {
@@ -36,7 +35,6 @@ const styles = StyleSheet.create({
   },
   text_textButton: {
     textDecorationLine: "underline",
-    fontWeight: "bold",
     fontFamily: "Montserrat-Medium",
   },
 });
